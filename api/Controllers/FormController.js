@@ -11,7 +11,7 @@ module.exports = {
         //     if (err) throw err;
         //     res.json(response);
         // })
-        res.json({title: "hello world!"});
+        res.json({title: "hello world!!!!!!!!"});
     },
     detail: (req, res) => {
         let sql = 'SELECT * FROM person where id = ?';
