@@ -6,11 +6,12 @@ const db = require('./../db')
 
 module.exports = {
     get: (req, res) => {
-        let sql = 'SELECT * FROM person';
-        db.query(sql, (err, response) => {
-            if (err) throw err;
-            res.json(response);
-        })
+        // let sql = 'SELECT * FROM person';
+        // db.query(sql, (err, response) => {
+        //     if (err) throw err;
+        //     res.json(response);
+        // })
+        res.json({title: "hello world!"});
     },
     detail: (req, res) => {
         let sql = 'SELECT * FROM person where id = ?';
