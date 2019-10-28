@@ -20,6 +20,8 @@ module.exports = function(app) {
     .put(accCtrl.put)
     .post(accCtrl.checkUserExist);
     
+  app.route('/checkEmail').post(accCtrl.checkEmailExist);
+
   app.route('/products')
     .get(productsCtrl.get)
     .post(productsCtrl.store);

@@ -57,5 +57,15 @@ module.exports = {
                 res.json({ result: false });
             }
         })
+    },
+    checkEmailExist: (req, res)=>{
+        let sql = "SELECT email FROM accounts WHERE email = '"+req.body.email+"'";
+        db.query(sql, (err, response)=>{
+            if (response.length != 0){
+                res.json({ result: true });
+            }else{
+                res.json({ result: false });
+            }
+        })
     }
 }
