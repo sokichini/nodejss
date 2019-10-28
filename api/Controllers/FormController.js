@@ -11,15 +11,14 @@ module.exports = {
         //     if (err) throw err;
         //     res.json(response);
         // })
-        res.json({title: "say you do!"});
+        res.json({title: "say you do!!!!!"});
     },
     detail: (req, res) => {
-        // let sql = 'SELECT * FROM person where id = ?';
-        // db.query(sql,[req.params.id], (err, response) => {
-        //     if (err) throw err;
-        //     res.json(response);
-        // })
-        res.json({id: req.params.id});
+        let sql = 'SELECT * FROM person where id = ?';
+        db.query(sql,[req.params.id], (err, response) => {
+            if (err) throw err;
+            res.json(response);
+        })
     },
     search: (req, res) => {
         let sql = "SELECT * FROM person where id LIKE '"+req.body.keyword+"' OR first_name LIKE N'%"+req.body.keyword+"%' OR last_name LIKE N'%"+req.body.keyword+"%'";
