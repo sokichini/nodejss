@@ -41,11 +41,23 @@ module.exports = {
         let us = req.body.username;
         let pw = crypto.AES.encrypt(req.body.password, secret).toString();
         let email = req.body.email;
+        let userStr = "SELECT username FROM accounts WHERE username = '"+us+"'";
+        db.query(userStr, (err, response)=>{
+            if (response.length != 0){
+                return res.json({ result: 'failed', message: 'Username đã được sử dụng' });
+            }
+        });
+        let emailStr = "SELECT email FROM accounts WHERE email = '"+email+"'";
+        db.query(emailStr, (err, response)=>{
+            if (response.length != 0){
+                return res.json({ result: 'failed', message: 'Email đã được sử dụng' });
+            }
+        });
         let sql = "INSERT INTO accounts VALUES (null, '"+us+"', '"+pw+"', '"+email+"')";
         db.query(sql, (err, response)=>{
-            res.json({ result: 'success'});
+            return res.json({ result: 'success'});
         }, (err)=>{
-            res.json({ result: 'failed', message: response });
+            return res.json({ result: 'failed', message: response });
         });
     },
     checkUserExist: (req, res)=>{
