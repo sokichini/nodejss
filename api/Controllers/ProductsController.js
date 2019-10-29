@@ -6,13 +6,13 @@ const db = require('./../db')
 
 module.exports = {
     get: (req, res) => {
-        // let sql = 'SELECT * FROM products'
-        // db.query(sql, (err, response) => {
-        //     if (err) throw err
-        //     res.json(response)
-        // })
+        let sql = 'SELECT * FROM products'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
         //res.sendFile(path.join(__dirname, 'data', 'products.json'));
-        res.sendFile('products.json', { root: 'data'});
+        //res.sendFile('products.json', { root: 'data'});
     },
     detail: (req, res) => {
         let sql = 'SELECT * FROM products WHERE id = ?'
