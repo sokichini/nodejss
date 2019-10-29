@@ -6,11 +6,21 @@ const db = require('./../db')
 
 module.exports = {
     get: (req, res) => {
-        let sql = 'SELECT * FROM products'
+        let sql = 'SELECT * FROM products';
         db.query(sql, (err, response) => {
-            if (err) throw err
-            res.json({ products : response })
-        })
+            let items = response;
+            let newItems = [];
+            try {
+                items.forEach(element => {
+                    element.availableSizes = JSON.parse(element.availableSizes);
+                    newItems.push(element);
+                });
+            } catch (err){
+                res.send(err)
+            } finally{
+                res.json({products: newItems});
+            }
+        });
         //res.sendFile(path.join(__dirname, 'data', 'products.json'));
         //res.sendFile('products.json', { root: 'data'});
     },
