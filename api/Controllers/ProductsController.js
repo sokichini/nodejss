@@ -13,6 +13,7 @@ module.exports = {
             try {
                 items.forEach(element => {
                     element.availableSizes = JSON.parse(element.availableSizes);
+                    element.sku = Number(element.sku);
                     newItems.push(element);
                 });
             } catch (err){
