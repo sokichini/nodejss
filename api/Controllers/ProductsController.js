@@ -14,6 +14,7 @@ module.exports = {
                 items.forEach(element => {
                     element.availableSizes = JSON.parse(element.availableSizes);
                     element.sku = Number(element.sku);
+                    element.isFreeShipping = element.isFreeShipping == 1 ? true : false;
                     newItems.push(element);
                 });
             } catch (err){
