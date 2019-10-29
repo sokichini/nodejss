@@ -9,7 +9,7 @@ module.exports = {
         let sql = 'SELECT * FROM products'
         db.query(sql, (err, response) => {
             if (err) throw err
-            res.json(response)
+            res.json({ products : response })
         })
         //res.sendFile(path.join(__dirname, 'data', 'products.json'));
         //res.sendFile('products.json', { root: 'data'});
