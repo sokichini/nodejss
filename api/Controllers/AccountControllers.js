@@ -14,7 +14,7 @@ module.exports = {
         //var string = crypto.AES.encrypt(pw, secret).toString();
         
         // Xem chuỗi đã mã hóa
-        //console.log(string);
+        //console.log(string);sadasdas
         
         // Lấy danh sách byte đã mã hóa
         //var bytes = crypto.AES.decrypt(string, 'ma bi mat');
